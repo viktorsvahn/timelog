@@ -87,15 +87,10 @@ def get_table(path, name, start_date, stop_date):
 
 class Config:
 	def __init__(self):
-		script_path = os.getcwd()
-		#spath = script_path.split('/')
-		#print(spath)
-
-		self.config_path = os.getcwd()+'/'
-		print(self.config_path)
-		#self.config_path = '../../'
+		script_path = os.path.realpath(__file__)
+		spath = script_path.split('/')[:-3]
+		self.config_path = '/'.join(spath)+'/'
 		self.config_fname = 'timelog.conf'
-		#print(self.config_path+self.config_fname)
 		self.config = self.parse_config(self.config_path+self.config_fname)
 
 
@@ -120,6 +115,7 @@ class Config:
 		f.close()
 
 	def parse_config(self, file):
+		print(filter)
 		if os.path.isfile(file):
 			#print('hoppla')
 			#print(file)
