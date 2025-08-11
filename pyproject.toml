@@ -1,0 +1,42 @@
+[build-system]
+requires = [
+    "setuptools",
+    "setuptools-git-versioning"
+]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools-git-versioning]
+enabled = true
+dev_template = "{tag}"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+
+[project]
+name = "timelog"
+dynamic = ["version"]
+authors = [
+  { name="Viktor Svahn", email="svahnv@gmail.com" },
+]
+description = "Manage time sheets using a command line interface. "
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    'pyyaml',
+    'pandas',
+    'tabulate',
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Ubuntu",
+]
+
+[project.urls]
+Homepage = "https://github.com/viktorsvahn/timelog/"
+Issues = "https://github.com/viktorsvahn/timelog/issues"
+
+
+[project.scripts]
+timelog = "timelog.main:main"
