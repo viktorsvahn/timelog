@@ -152,9 +152,11 @@ class Schema(Config):
 		if start_date is None:
 			#start_date = self.table.index.min()[0]
 			start_date = min(self.table.Date)
+			#print(start_date)
 		if stop_date is None:
 			#stop_date  = self.table.index.max()#[0]
 			stop_date = max(self.table.Date)
+			#print(stop_date)
 
 		start = datetime.strptime(start_date, "%Y-%m-%d").date()
 		stop = datetime.strptime(stop_date, "%Y-%m-%d").date()
@@ -184,10 +186,17 @@ class Schema(Config):
 
 	
 def main():
-	if args.start: start_date = args.start
-	else: start_date = None
-	if args.stop: stop_date = args.stop
-	else: stop_date = None
+	if args.start:
+		start_date = args.start
+		print(start_date)
+	else:
+		start_date = None
+	
+	if args.stop:
+		stop_date = args.stop
+		print(stop_date)
+	else:
+		stop_date = None
 	schema = Schema(start_date, stop_date)
 
 
@@ -211,7 +220,8 @@ def main():
 		)
 
 	elif args.show:
-		date_selection = schema.table[schema.table.Date == args.show]
+		#date_selection = schema.table[args.show == schema.table.Date]
+		date_selection = schema.table[schema.table.Date.str.contains(args.show)]
 		print(date_selection.to_string())
 
 	elif args.delete:

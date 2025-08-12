@@ -18,7 +18,8 @@ version_help = f'\
 timelog ver. {version("xyzutils")}'
 
 add_help = """
-ddad
+add new row by submitting time spent, category, note, and date 
+(defaults to todays date if omitted)
 """
 
 delete_help = """
@@ -26,19 +27,21 @@ dsds
 """
 
 category_help = """
-fsfsf
+Filter table in terms of a category
 """
 
 results_help = """
-fsfsf
+Prints pretty tables with time spent on an activity within a
+time frame
 """
 
 show_help = """
-stst
+Shows the contents of the table based on date (possible to 
+filter based on part of date as well, e.g. 2025-01)
 """
 
 start_help = """
-stst
+Specify a start date 
 """
 
 stop_help = """
